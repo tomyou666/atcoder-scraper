@@ -1,4 +1,4 @@
-module atc
+module atcs
 
 go 1.24.6
 

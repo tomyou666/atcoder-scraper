@@ -21,7 +21,7 @@ type ProblemData struct {
 }
 
 func printHelp() {
-	fmt.Println("atc - AtCoderの問題を取得してローカルに保存するツール")
+	fmt.Println("atcs - AtCoderの問題を取得してローカルに保存するツール")
 	fmt.Println()
 	fmt.Println("使用方法:")
 	fmt.Printf("  %s <AtCoderの問題URL> [出力ディレクトリ名/ファイル名]\n", os.Args[0])

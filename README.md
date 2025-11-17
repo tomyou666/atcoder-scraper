@@ -1,4 +1,4 @@
-# atc
+# atcs
 
 AtCoderの問題を取得してローカルに保存するツールです。
 
@@ -14,12 +14,12 @@ AtCoderの問題を取得してローカルに保存するツールです。
 
 1. [Releases](https://github.com/tomyou666/atcoder-scraper/releases)ページにアクセス
 2. お使いのOSとアーキテクチャに合ったバイナリをダウンロード：
-   - **Windows (amd64)**: `atc-windows-amd64.exe`
-   - **Windows (arm64)**: `atc-windows-arm64.exe`
-   - **Linux (amd64)**: `atc-linux-amd64`
-   - **Linux (arm64)**: `atc-linux-arm64`
-   - **macOS (amd64)**: `atc-darwin-amd64`
-   - **macOS (arm64)**: `atc-darwin-arm64`
+   - **Windows (amd64)**: `atcs-windows-amd64.exe`
+   - **Windows (arm64)**: `atcs-windows-arm64.exe`
+   - **Linux (amd64)**: `atcs-linux-amd64`
+   - **Linux (arm64)**: `atcs-linux-arm64`
+   - **macOS (amd64)**: `atcs-darwin-amd64`
+   - **macOS (arm64)**: `atcs-darwin-arm64`
 
 3. ダウンロードしたファイルを実行可能にして、PATHに追加
 
@@ -33,36 +33,36 @@ AtCoderの問題を取得してローカルに保存するツールです。
 
 ```bash
 # 最新バージョンをダウンロード（amd64の場合）
-curl -L https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atc-linux-amd64 -o atc
+curl -L https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atcs-linux-amd64 -o atcs
 
 # arm64の場合
-# curl -L https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atc-linux-arm64 -o atc
+# curl -L https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atcs-linux-arm64 -o atcs
 
 # 実行可能にする
-chmod +x atc
+chmod +x atcs
 
 # PATHに追加（例：/usr/local/bin/）
-sudo mv atc /usr/local/bin/
+sudo mv atcs /usr/local/bin/
 
 # インストール確認
-atc --help
+atcs --help
 ```
 
 特定のバージョンをインストールする場合：
 ```bash
 # 例：v1.0.0をインストール
-curl -L https://github.com/tomyou666/atcoder-scraper/releases/download/v1.0.0/atc-linux-amd64 -o atc
-chmod +x atc
-sudo mv atc /usr/local/bin/
+curl -L https://github.com/tomyou666/atcoder-scraper/releases/download/v1.0.0/atcs-linux-amd64 -o atcs
+chmod +x atcs
+sudo mv atcs /usr/local/bin/
 ```
 
 #### macOSの場合
 ```bash
 # ダウンロードしたファイルを実行可能にする
-chmod +x atc-darwin-amd64
+chmod +x atcs-darwin-amd64
 
 # 適切な場所に移動（例：/usr/local/bin/）
-sudo mv atc-darwin-amd64 /usr/local/bin/atc
+sudo mv atcs-darwin-amd64 /usr/local/bin/atcs
 ```
 
 ### 方法2: ソースからビルド
@@ -74,17 +74,17 @@ sudo mv atc-darwin-amd64 /usr/local/bin/atc
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/your-username/atc.git
-cd atc
+git clone git@github.com:tomyou666/atcoder-scraper.git atcs
+cd atcs
 
 # 依存関係をインストール
 go mod download
 
 # ビルド
-go build -o atc .
+go build -o atcs .
 
 # Windowsの場合
-go build -o atc.exe .
+go build -o atcs.exe .
 ```
 
 ## 使用方法
