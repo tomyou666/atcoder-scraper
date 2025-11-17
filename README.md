@@ -12,7 +12,7 @@ AtCoderの問題を取得してローカルに保存するツールです。
 
 ### 方法1: GitHub Releasesからダウンロード（推奨）
 
-1. [Releases](https://github.com/your-username/atc/releases)ページにアクセス
+1. [Releases](https://github.com/tomyou666/atcoder-scraper/releases)ページにアクセス
 2. お使いのOSとアーキテクチャに合ったバイナリをダウンロード：
    - **Windows (amd64)**: `atc-windows-amd64.exe`
    - **Windows (arm64)**: `atc-windows-arm64.exe`
@@ -29,13 +29,40 @@ AtCoderの問題を取得してローカルに保存するツールです。
 # 環境変数PATHに追加
 ```
 
-#### Linux/macOSの場合
+#### Linuxの場合（curlでインストール）
+
+```bash
+# 最新バージョンをダウンロード（amd64の場合）
+curl -L https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atc-linux-amd64 -o atc
+
+# arm64の場合
+# curl -L https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atc-linux-arm64 -o atc
+
+# 実行可能にする
+chmod +x atc
+
+# PATHに追加（例：/usr/local/bin/）
+sudo mv atc /usr/local/bin/
+
+# インストール確認
+atc --help
+```
+
+特定のバージョンをインストールする場合：
+```bash
+# 例：v1.0.0をインストール
+curl -L https://github.com/tomyou666/atcoder-scraper/releases/download/v1.0.0/atc-linux-amd64 -o atc
+chmod +x atc
+sudo mv atc /usr/local/bin/
+```
+
+#### macOSの場合
 ```bash
 # ダウンロードしたファイルを実行可能にする
-chmod +x atc-linux-amd64
+chmod +x atc-darwin-amd64
 
 # 適切な場所に移動（例：/usr/local/bin/）
-sudo mv atc-linux-amd64 /usr/local/bin/atc
+sudo mv atc-darwin-amd64 /usr/local/bin/atc
 ```
 
 ### 方法2: ソースからビルド
@@ -112,7 +139,18 @@ GitHub Actionsが自動的に複数プラットフォーム用のバイナリを
 
 ## ライセンス
 
-（ライセンスを追加してください）
+このプロジェクトは [MIT License](LICENSE) の下で公開されています。
+
+MIT Licenseにより、以下のことが許可されています：
+- ✅ 商用利用
+- ✅ 改変
+- ✅ 配布
+- ✅ 私的使用
+- ✅ 特許利用
+
+条件として、ライセンス表示と著作権表示を含める必要があります。
+
+詳細は [LICENSE](LICENSE) ファイルを参照してください。
 
 ## 貢献
 
