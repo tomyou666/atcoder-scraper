@@ -20,10 +20,41 @@ type ProblemData struct {
 	Images      []string `json:"images,omitempty"`
 }
 
+func printHelp() {
+	fmt.Println("atc - AtCoderの問題を取得してローカルに保存するツール")
+	fmt.Println()
+	fmt.Println("使用方法:")
+	fmt.Printf("  %s <AtCoderの問題URL> [出力ディレクトリ名/ファイル名]\n", os.Args[0])
+	fmt.Println()
+	fmt.Println("オプション:")
+	fmt.Println("  --help, -h    このヘルプメッセージを表示")
+	fmt.Println()
+	fmt.Println("例:")
+	fmt.Printf("  # 標準出力にJSONを表示\n")
+	fmt.Printf("  %s https://atcoder.jp/contests/abc123/tasks/abc123_a\n", os.Args[0])
+	fmt.Println()
+	fmt.Printf("  # ディレクトリに保存（画像も自動ダウンロード）\n")
+	fmt.Printf("  %s https://atcoder.jp/contests/abc123/tasks/abc123_a problem_data\n", os.Args[0])
+	fmt.Println()
+	fmt.Printf("  # ファイル名を指定して保存\n")
+	fmt.Printf("  %s https://atcoder.jp/contests/abc123/tasks/abc123_a output.json\n", os.Args[0])
+	fmt.Println()
+	fmt.Println("出力形式:")
+	fmt.Println("  問題データはJSON形式で保存されます。")
+	fmt.Println("  画像は自動的にダウンロードされ、JSONファイルと同じディレクトリに保存されます。")
+}
+
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Fprintf(os.Stderr, "使用方法: %s <url> [ディレクトリ名/ファイル名]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "ヘルプを表示するには: %s --help\n", os.Args[0])
 		os.Exit(1)
+	}
+
+	// --help または -h オプションをチェック
+	if os.Args[1] == "--help" || os.Args[1] == "-h" {
+		printHelp()
+		os.Exit(0)
 	}
 
 	problemURL := os.Args[1]
