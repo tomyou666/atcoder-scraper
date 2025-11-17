@@ -48,23 +48,6 @@ sudo mv atcs /usr/local/bin/
 atcs --help
 ```
 
-特定のバージョンをインストールする場合：
-```bash
-# 例：v1.0.0をインストール
-curl -L https://github.com/tomyou666/atcoder-scraper/releases/download/v1.0.0/atcs-linux-amd64 -o atcs
-chmod +x atcs
-sudo mv atcs /usr/local/bin/
-```
-
-#### macOSの場合
-```bash
-# ダウンロードしたファイルを実行可能にする
-chmod +x atcs-darwin-amd64
-
-# 適切な場所に移動（例：/usr/local/bin/）
-sudo mv atcs-darwin-amd64 /usr/local/bin/atcs
-```
-
 ### 方法2: ソースからビルド
 
 #### 前提条件
