@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -235,6 +236,45 @@ func downloadImages(baseURL string, imageURLs []string, outputDir string) error 
 	}
 
 	for i, imgURL := range imageURLs {
+		// data URIの場合はBase64デコードして直接保存
+		if strings.HasPrefix(imgURL, "data:image/") {
+			// data:image/jpeg;base64,/9j/4AA... の形式を処理
+			commaIndex := strings.Index(imgURL, ",")
+			if commaIndex == -1 {
+				continue
+			}
+
+			// MIMEタイプとBase64データを分離
+			header := imgURL[:commaIndex]
+			base64Data := imgURL[commaIndex+1:]
+
+			// Base64データをデコード
+			imageData, err := base64.StdEncoding.DecodeString(base64Data)
+			if err != nil {
+				continue
+			}
+
+			// ファイル拡張子をMIMEタイプから決定
+			ext := ".png"
+			if strings.Contains(header, "image/jpeg") || strings.Contains(header, "image/jpg") {
+				ext = ".jpg"
+			} else if strings.Contains(header, "image/png") {
+				ext = ".png"
+			} else if strings.Contains(header, "image/gif") {
+				ext = ".gif"
+			} else if strings.Contains(header, "image/webp") {
+				ext = ".webp"
+			}
+
+			// ファイルに保存
+			filename := fmt.Sprintf("image_%d%s", i+1, ext)
+			filePath := filepath.Join(outputDir, filename)
+			err = os.WriteFile(filePath, imageData, 0644)
+			if err != nil {
+				continue
+			}
+			continue
+		}
 		// 相対URLを絶対URLに変換
 		parsedURL, err := url.Parse(imgURL)
 		if err != nil {
